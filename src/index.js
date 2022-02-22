@@ -1,4 +1,6 @@
-const user = {};
+import React from "react";
+import ReactDOM from "react-dom";
 
-// Optinal chaining
-console.log(user?.address?.street);
+import App from "./App";
+
+ReactDOM.render(<App />, document.getElementById("root"));
