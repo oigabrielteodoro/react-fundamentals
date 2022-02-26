@@ -3,13 +3,16 @@ import PropTypes from "prop-types";
 
 export default function Post({ post: { title, subtitle }, likes }) {
   return (
-    <article>
-      <strong>{title}</strong>
+    <>
+      <article>
+        <strong>{title}</strong>
+        <br />
+        <small>{subtitle}</small>
+        <br />
+        Media: {likes / 2}
+      </article>
       <br />
-      <small>{subtitle}</small>
-      <br />
-      Media: {likes / 2}
-    </article>
+    </>
   );
 }
 
