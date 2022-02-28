@@ -1,24 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 
 import Post from "./Post";
 import Header from "./Header";
 
-const posts = [
-  { title: "Title #01", subtitle: "Sub #01", likes: 20 },
-  { title: "Title #02", subtitle: "Sub #02", likes: 10 },
-  { title: "Title #03", subtitle: "Sub #03", likes: 50 },
-];
-
 export default function App() {
+  const [posts, setPosts] = useState([]);
+
+  function handleRefresh() {
+    setPosts((prevState) => [
+      ...prevState,
+      {
+        id: Math.random(),
+        title: `Title #0${prevState.length + 1}`,
+        subtitle: `Sub #0${prevState.length + 1}`,
+        likes: 20,
+      },
+    ]);
+  }
+
   return (
     <>
       <Header>
-        <h2>Posts da semana</h2>
+        <h2>
+          Posts da semana
+          <button onClick={handleRefresh}>Atualizar</button>
+        </h2>
       </Header>
 
       {posts.map((post) => (
         <Post
-          key={post.title}
+          key={post.id}
           likes={post.likes}
           post={{
             title: post.title,
